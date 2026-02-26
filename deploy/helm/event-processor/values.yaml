@@ -1,0 +1,30 @@
+replicaCount: 2
+
+image:
+  repository: event-processor
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+env:
+  RABBITMQ_URL: "amqp://guest:guest@rabbitmq:5672/"
+  KAFKA_BROKERS: "kafka:9092"
+  REDIS_ADDR: "redis:6379"
+  LOG_LEVEL: "info"
