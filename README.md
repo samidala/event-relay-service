@@ -43,7 +43,7 @@ graph LR
 | `LOG_LEVEL` | Logging level (debug, info, warn, error) | `info` |
 
 ### Running Locally:
-1. Start infrastructure (e.g., via Docker Compose - not included in code).
+1. Start infrastructure (e.g., via Docker Compose).
 2. Run the service:
    ```bash
    go run main.go
